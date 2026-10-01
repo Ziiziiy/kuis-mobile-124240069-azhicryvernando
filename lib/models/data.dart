@@ -11,8 +11,8 @@ class Account {
 }
 
 Account account = Account(
-  username: "adminuniqlo",
-  password: "uniqlo123",
+  username: "Nando",
+  password: "069",
   displayName: "Admin UNIQLO",
 );
 
@@ -25,6 +25,7 @@ class Product {
   String imageUrl;
   int likeCount;
   int stock;
+  bool isFavorite;
   List<String> sizes;
 
   Product({
@@ -37,6 +38,7 @@ class Product {
     required this.likeCount,
     required this.stock,
     required this.sizes,
+    this.isFavorite = false,
   });
 }
 
