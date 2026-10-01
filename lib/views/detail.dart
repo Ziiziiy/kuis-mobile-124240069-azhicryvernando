@@ -78,15 +78,15 @@ class _DetailPageState extends State<DetailPage> {
 
             SizedBox(height: 15),
             Text(
-              "Jumlah Produk",
+              "Jumlah Produk : $_counter",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
           
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headlineMedium,
+            // ),
             
 
             SizedBox(height: 10),
@@ -100,7 +100,7 @@ class _DetailPageState extends State<DetailPage> {
               product.isFavorite ? Icons.favorite : Icons.favorite_border,
               color: Colors.red,
             ),),
-            
+
             Text(
               "Jumlah Like ${product.likeCount}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal), 
