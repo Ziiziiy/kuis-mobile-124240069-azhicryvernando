@@ -10,28 +10,32 @@ class DetailPage extends StatefulWidget {
   State<DetailPage> createState() => _DetailPageState();
 }
 
+
 class _DetailPageState extends State<DetailPage> {
+    int _counter = 1;
+
+    void _incrementCounter() {
+        setState(() {
+          _counter++;
+        });
+      }
+
+    void _incrementCounter2() {
+        setState(() {
+          _counter--;
+        });
+      }
+
+
   @override
   Widget build(BuildContext context) {
     Product product = widget.product;
 
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text(product.productName),
-        actions: [
-          // Tombol favorite
-          IconButton(
-            onPressed: () {
-              setState(() {
-                product.isFavorite = !product.isFavorite;
-              });
-            },
-            icon: Icon(
-              product.isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Colors.red,
-            ),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -43,7 +47,7 @@ class _DetailPageState extends State<DetailPage> {
               child: Image.network(
                 product.imageUrl,
                 width: double.infinity,
-                height: 220,
+                height: 320,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
@@ -71,6 +75,49 @@ class _DetailPageState extends State<DetailPage> {
                 color: Colors.green,
               ),
             ),
+
+            SizedBox(height: 15),
+            Text(
+              "Jumlah Produk",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+
+          
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            
+
+            SizedBox(height: 10),
+
+            IconButton(onPressed: () {
+              setState(() {
+                product.isFavorite = !product.isFavorite;
+              });
+            },
+            icon: Icon(
+              product.isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Colors.red,
+            ),),
+            
+            Text(
+              "Jumlah Like ${product.likeCount}",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal), 
+            ),
+
+            Text(
+              "Stok : ${product.stock}",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal), 
+            ),
+
+            Text(
+              "Ukuran : ${product.sizes}",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal), 
+            ),
+
+            
+
             SizedBox(height: 15),
             Text(
               "Deskripsi",
@@ -81,6 +128,18 @@ class _DetailPageState extends State<DetailPage> {
           ],
         ),
       ),
+      
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter2,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }

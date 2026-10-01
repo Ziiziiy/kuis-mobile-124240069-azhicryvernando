@@ -81,7 +81,9 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: hasil.isEmpty
               ? Center(child: Text("Produk tidak ditemukan"))
-              : ListView.builder(
+              : 
+              
+              ListView.builder(
                   itemCount: hasil.length,
                   itemBuilder: (context, index) {
                     Product menu = hasil[index];
@@ -116,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       title: Text(menu.productName),
-                      subtitle: Text("${menu.type} • ${menu.price}"),
+                      subtitle: Text("${menu.type} • ${menu.price} • Jumlah Stok: ${menu.stock} • Jumlah Like: ${menu.likeCount}"),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
